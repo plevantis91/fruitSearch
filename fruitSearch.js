@@ -23,12 +23,16 @@ function searchHandler(e) {
 }
 
 function showSuggestions(results, inputVal) {
-    for(let result of results){
-        const fruitLi = document.createElement("li")
-        fruitLi.textContent = result;
-        suggestions.append(fruitLi)
-    };
+	while (suggestions.firstChild){
+		suggestions.removeChild(suggestions.firstChild);
+	}
+	for (let result of results){
+		let listItem = document.createElement('li');
+		listItem.innerHTML = result;
+		suggestions.appendChild(listItem);
+	}
 }
+
    
 
 function useSuggestion(e) {
@@ -41,6 +45,15 @@ function useSuggestion(e) {
 
 
 }
+
+function removeSuggestion(e) {
+	if (!(document.getElementById('fruit').contains(e.target))){
+		while (suggestions.firstChild){
+			suggestions.removeChild(suggestions.firstChild);
+		}
+	} 
+}
+
 
 input.addEventListener('keyup', searchHandler);
 suggestions.addEventListener('click', useSuggestion);
