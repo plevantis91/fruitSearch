@@ -46,13 +46,6 @@ function useSuggestion(e) {
 
 }
 
-function removeSuggestion(e) {
-	if (!(document.getElementById('fruit').contains(e.target))){
-		while (suggestions.firstChild){
-			suggestions.removeChild(suggestions.firstChild);
-		}
-	} 
-}
 
 
 input.addEventListener('keyup', searchHandler);
